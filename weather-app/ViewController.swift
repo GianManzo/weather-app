@@ -9,16 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private lazy var backgroundView: BackgroundView = BackgroundView()
-    private lazy var headerView: HeaderView = HeaderView()
+    private lazy var backgroundView: BackgroundView = BackgroundView(superview: view)
+    private lazy var headerView: HeaderView = HeaderView(superview: view)
+
     
     //methods cicle life view controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setHierarchy()
-        headerView.setupConstraints(in: view)
-        backgroundView.setupConstraints(in: view)
         
         // when did load, first time
     }
@@ -46,7 +45,7 @@ class ViewController: UIViewController {
     
     private func setHierarchy(){
         view.addSubview(backgroundView)
-        backgroundView.addSubview(headerView)
+        view.addSubview(headerView)
     }
 
 }
