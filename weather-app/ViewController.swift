@@ -9,25 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-    private lazy var customView: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
+    private lazy var backgroundView: BackgroundView = BackgroundView()
+    private lazy var headerView: HeaderView = HeaderView()
     
     //methods cicle life view controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setHierarchy()
+        headerView.setupConstraints(in: view)
+        backgroundView.setupConstraints(in: view)
         
         // when did load, first time
     }
     
-    override func viewDidAppear(_ animated: Bool){
+    /* override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         // when the screen is visible
     }
@@ -45,30 +41,13 @@ class ViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool){
         super.viewDidDisappear(animated)
         // when the screen will did disapear
-    }
+    }*/
     
-
-    
-    private func setupView (){
-        view.backgroundColor = .red
-
-        setHierarchy()
-        setConstraint()
-     
-    }
     
     private func setHierarchy(){
-        view.addSubview(customView)
+        view.addSubview(backgroundView)
+        backgroundView.addSubview(headerView)
+    }
 
-    }
-    
-    private func setConstraint(){
-        NSLayoutConstraint.activate([
-            customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            customView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            customView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
-            customView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
-        ])
-    }
 }
 
