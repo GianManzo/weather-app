@@ -2,7 +2,7 @@
 
 import UIKit
 
-class BackgroundView: UIImageView {
+class Background: UIImageView {
     
     init(superview: UIView) {
         super.init(frame: .zero)
@@ -11,8 +11,10 @@ class BackgroundView: UIImageView {
         setupConstraints(in: superview)
     }
     
+    private var background: String = "background"
+    
     private func setupUI() {
-        image = UIImage(named: "Background")
+        image = UIImage(named: background)
         contentMode = .scaleAspectFill
         translatesAutoresizingMaskIntoConstraints = false
     }

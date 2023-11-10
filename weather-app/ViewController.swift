@@ -8,9 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    private lazy var backgroundView: BackgroundView = BackgroundView(superview: view)
-    private lazy var headerView: HeaderView = HeaderView(superview: view)
+    private lazy var homeScreen: Home = Home(viewController: view)
 
     
     //methods cicle life view controller
@@ -44,8 +42,7 @@ class ViewController: UIViewController {
     
     
     private func setHierarchy(){
-        view.addSubview(backgroundView)
-        view.addSubview(headerView)
+        view.addSubview(homeScreen)
     }
 
 }
