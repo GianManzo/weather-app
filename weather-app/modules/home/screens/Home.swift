@@ -13,7 +13,9 @@ class Home: UIView {
         super.init(frame: .zero)
         
         let background: Background = Background(superview: viewController);
+        background.setupConstraints(in: viewController)
         let header: Header = Header(superview: viewController)
+        header.setupConstraints(in: viewController)
         
         viewController.addSubview(self)
         self.addSubview(background)
